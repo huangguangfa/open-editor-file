@@ -1,0 +1,8 @@
+{
+  "root": true,
+  "rules": {
+    "no-console": "error",
+    "no-debugger": "error",
+    "@typescript-eslint/no-unused-vars": "error"
+  }
+}
