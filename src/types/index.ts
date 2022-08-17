@@ -1,7 +1,7 @@
-type specifiedEditorCallback = () => void
-export type specifiedEditor = string | specifiedEditorCallback | undefined
+type specifiedEditorCallback = () => void;
+export type specifiedEditor = string | specifiedEditorCallback | undefined;
 
-type srcRootCallback = () => void
-export type srcRoot = string | srcRootCallback | undefined
+type srcRootCallback = () => void;
+export type srcRoot = string | srcRootCallback | undefined;
 
-export type onErrorCallback = () => void
+export type onErrorCallback = (fileName?: any, mes?: any | null) => void;

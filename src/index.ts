@@ -1,6 +1,6 @@
 import url from "url";
 import path from "path";
-import { launch } from "./core/launch-editor";
+import { launchEditor } from "./core/launch-editor";
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
 // const launch = require('./launch-editor')
 
@@ -29,7 +29,7 @@ export default function (
         `launch-editor-middleware: required query param "file" is missing.`
       );
     } else {
-      launch(
+      launchEditor(
         path.resolve(srcRoot as string, file as string),
         specifiedEditor,
         onErrorCallback
