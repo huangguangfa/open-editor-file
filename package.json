@@ -6,11 +6,10 @@
     "type": "git",
     "url": "https://github.com/huanggungfa/open-vscode-file"
   },
-  "main": "index.js",
   "scripts": {
-    "build": "tsup && esno scripts/postbuild.ts",
+    "build": "tsup && esno scripts/build.ts",
     "dev": "tsup --watch src",
-    "lint": "eslint ."
+    "lint": "eslint"
   },
   "keywords": [],
   "author": "gf",
@@ -20,6 +19,7 @@
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "eslint": "^8.22.0",
+    "esno": "^0.16.3",
     "tsup": "^6.2.2",
     "typescript": "^4.7.4"
   }
