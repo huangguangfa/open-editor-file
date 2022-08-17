@@ -15,8 +15,8 @@ import path from "path";
 import childProcess from "child_process";
 import type { specifiedEditor, onErrorCallback } from "../types";
 
-const guessEditor = require("./guess");
-const getArgumentsForPosition = require("./get-args");
+import { guessEditor } from "./guess";
+import { getArgumentsForPosition } from "./get-args";
 
 function wrapErrorCallback(
   cb: (fileName: string, errorMessage: string) => void
@@ -110,14 +110,14 @@ export function launchEditor(
       editor,
       fileName,
       lineNumber,
-      columnNumber
+      columnNumber as string
     );
     args.push.apply(args, extraArgs);
   } else {
     args.push(fileName);
   }
 
-  if (_childProcess && isTerminalEditor(editor)) {
+  if (_childProcess && isTerminalEditor(editor as string)) {
     // There's an existing editor process already and it's attached
     // to the terminal, so go kill it. Otherwise two separate editor
     // instances attach to the stdin/stdout which gets confusing.
@@ -127,13 +127,19 @@ export function launchEditor(
   if (process.platform === "win32") {
     // On Windows, launch the editor in a shell because spawn can only
     // launch .exe files.
-    _childProcess = childProcess.spawn("cmd.exe", ["/C", editor].concat(args), {
+    _childProcess = childProcess.spawn(
+      "cmd.exe",
+      ["/C", editor as string].concat(args as any[]),
+      {
+        stdio: "inherit",
+      }
+    );
+  } else {
+    _childProcess = childProcess.spawn(editor as string, args as any[], {
       stdio: "inherit",
     });
-  } else {
-    _childProcess = childProcess.spawn(editor, args, { stdio: "inherit" });
   }
-  _childProcess.on("exit", function (errorCode) {
+  _childProcess?.on("exit", function (errorCode) {
     _childProcess = null;
 
     if (errorCode) {
@@ -141,7 +147,7 @@ export function launchEditor(
     }
   });
 
-  _childProcess.on("error", function (error) {
+  _childProcess?.on("error", function (error) {
     onErrorCallback(fileName, error.message);
   });
 }
