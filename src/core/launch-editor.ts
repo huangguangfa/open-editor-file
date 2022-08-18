@@ -11,7 +11,6 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
-// import colors from "picocolors";
 import childProcess from "child_process";
 import type { specifiedEditor, onErrorCallback } from "../types";
 
@@ -22,19 +21,10 @@ function wrapErrorCallback(
   cb: (fileName: string, errorMessage: string) => void
 ) {
   return (fileName: string, errorMessage: string) => {
-    console
-      .log
-      //   colors.red(
-      //     "Could not open " + path.basename(fileName) + " in the editor."
-      //   )
-      ();
     if (errorMessage) {
       if (errorMessage[errorMessage.length - 1] !== ".") {
         errorMessage += ".";
       }
-      //   console.log(
-      //     colors.red("The editor process exited with an error: " + errorMessage)
-      //   );
     }
     if (cb) cb(fileName, errorMessage);
   };

@@ -25,9 +25,10 @@ export default function (
     console.log(file);
     if (!file) {
       // res.statusCode = 500;
-      res.end(
-        `launch-editor-middleware: required query param "file" is missing.`
-      );
+      // res.end(
+      //   `launch-editor-middleware: required query param "file" is missing.`
+      // );
+      next();
     } else {
       launchEditor(
         path.resolve(srcRoot as string, file as string),
