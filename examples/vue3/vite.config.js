@@ -1,14 +1,26 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from "node:url";
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import openCodefile from "../../src/index.ts";
 
-// https://vitejs.dev/config/
+function customServicePlugin() {
+  return {
+    name: "custom-service-plugin",
+    configureServer(server) {
+      server.middlewares.use(openCodefile());
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), customServicePlugin()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
-})
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
+  server: {
+    host: true,
+  },
+});

@@ -2,7 +2,6 @@ import url from "url";
 import path from "path";
 import { launchEditor } from "./core/launch-editor";
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
-// const launch = require('./launch-editor')
 
 export default function (
   specifiedEditor: specifiedEditor,
@@ -21,10 +20,11 @@ export default function (
 
   srcRoot = srcRoot || process.cwd();
 
-  return function launchEditorMiddleware(req: any, res: any) {
+  return function launchEditorMiddleware(req: any, res: any, next: any) {
     const { file } = url.parse(req.url, true).query || {};
+    console.log(file);
     if (!file) {
-      res.statusCode = 500;
+      // res.statusCode = 500;
       res.end(
         `launch-editor-middleware: required query param "file" is missing.`
       );

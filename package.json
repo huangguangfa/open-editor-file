@@ -11,6 +11,8 @@
     "dev": "tsup --watch src",
     "lint": "eslint"
   },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "keywords": [],
   "author": "gf",
   "license": "ISC",
