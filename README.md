@@ -1,2 +1,9 @@
 # open-vscode-file
-基于构建工具的开箱即用插件、默认适用于vue项目，做到`快捷键点击页面`跳转到vscode组件页面文件！
+
+用于`vue(2,3)`项目通过`点击页面`快速打开当前组件文件功能、支持市面主流编辑器`vscode、 webstorm、sublimeText、idea、phpstorm、等等...`、支持开箱即用、常用参数定制化需求!
+
+### webpack构建工具使用
+
+
+### vite构建工具使用
+
