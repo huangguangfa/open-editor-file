@@ -22,12 +22,10 @@ export default function (
 
   return function launchEditorMiddleware(req: any, res: any, next: any) {
     const { file } = url.parse(req.url, true).query || {};
-    console.log(file);
     if (!file) {
-      // res.statusCode = 500;
-      // res.end(
-      //   `launch-editor-middleware: required query param "file" is missing.`
-      // );
+      res.end(
+        `launch-editor-middleware: required query param "file" is missing.`
+      );
       next();
     } else {
       launchEditor(

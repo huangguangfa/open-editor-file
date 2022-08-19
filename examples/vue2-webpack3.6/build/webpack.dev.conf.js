@@ -9,10 +9,9 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 const portfinder = require("portfinder");
-const openFileServicePlugin = require("open-vscode-file").default;
+const { openFileServicePlugin } = require("open-vscode-file/webpack");
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
-
 console.log("openFileServicePlugin", openFileServicePlugin);
 
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -51,7 +50,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll
     },
-    onBeforeSetupMiddleware: openFileServicePlugin()
+    // onBeforeSetupMiddleware: openFileServicePlugin()
+    // onBeforeSetupMiddleware: function(devServer) {
+    //   console.log(devServer);
+    // }
+    before: openFileServicePlugin()
   },
   plugins: [
     new webpack.DefinePlugin({
