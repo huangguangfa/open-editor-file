@@ -22,6 +22,10 @@
     "./vite": {
       "require": "./dist/vite.js",
       "import": "./dist/vite.mjs"
+    },
+    "./webpack": {
+      "require": "./dist/webpack.js",
+      "import": "./dist/webpack.mjs"
     }
   },
   "keywords": [],
