@@ -1,4 +1,4 @@
-import openCodefile from "./index";
+import openCodeFile from "./index";
 import { options } from './config'
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
 import type { ViteDevServer, Plugin } from "vite";
@@ -9,12 +9,12 @@ export function openFileServicePlugin(
   onErrorCallback: onErrorCallback
 ):Plugin{
   return {
-    name: "openCodefile-service-plugin",
+    name: "openCodeFileService-plugin",
     configureServer(server: ViteDevServer) {
-      const openCodefiles = openCodefile(specifiedEditor, srcRoot, onErrorCallback)
+      const openCodeFiles = openCodeFile(specifiedEditor, srcRoot, onErrorCallback)
       server.middlewares.use(function (req, res, next) {
         if (req.url?.includes(options.serverPath)) {
-          openCodefiles(req,res,next)
+          openCodeFiles(req,res,next)
         } else {
           next()
         }

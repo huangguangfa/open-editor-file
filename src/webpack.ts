@@ -7,7 +7,6 @@ export function openFileServicePlugin(
   onErrorCallback: onErrorCallback
 ) {
   return function (app: any) {
-    console.log(app)
     app.use('/__open-in-editors', openCodefile(specifiedEditor, srcRoot, onErrorCallback))
   }
 }

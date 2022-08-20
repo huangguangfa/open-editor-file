@@ -76,6 +76,7 @@ export function launchEditor(
   onErrorCallback = wrapErrorCallback(onErrorCallback);
 
   const [editor, ...args] = guessEditor(specifiedEditor);
+  
   if (!editor) {
     onErrorCallback(fileName, null);
     return;
@@ -86,12 +87,6 @@ export function launchEditor(
     fileName.startsWith("/mnt/") &&
     /Microsoft/i.test(os.release())
   ) {
-    // Assume WSL / "Bash on Ubuntu on Windows" is being used, and
-    // that the file exists on the Windows file system.
-    // `os.release()` is "4.4.0-43-Microsoft" in the current release
-    // build of WSL, see: https://github.com/Microsoft/BashOnWindows/issues/423#issuecomment-221627364
-    // When a Windows editor is specified, interop functionality can
-    // handle the path translation, but only if a relative path is used.
     fileName = path.relative("", fileName);
   }
 

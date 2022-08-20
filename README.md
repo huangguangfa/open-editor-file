@@ -4,18 +4,20 @@
 
 
 ### webpack构建工具使用
-##### `webpack3.6版本 => webpack.dev.conf.js`
+##### `webpack(3.6 | 4.0)版本 => webpack.dev.conf.js`
 ```js
 const { openFileServicePlugin } = require("open-vscode-file/webpack");
 const devWebpackConfig = merge(baseWebpackConfig, {
     ...,
     devServer: {
         ...,
-        before: openFileServicePlugin() // 注入插件
+        before: openFileServicePlugin(), // 注入插件
         ...
     }
 })
 ```
+##### `webpack(5.0)版本 => webpack.dev.conf.js`
+
 
 
 ### vite构建工具使用

@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue";
 import { openFileServicePlugin } from "open-vscode-file/vite";
 
 export default defineConfig({
-  plugins: [vue(), openFileServicePlugin()],
+  plugins: [vue(), openFileServicePlugin("webstorm")],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
