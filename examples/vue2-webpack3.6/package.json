@@ -10,7 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "open-vscode-file": "workspace:*",
+    "open-editor-file": "workspace:*",
     "vue": "^2.5.2"
   },
   "devDependencies": {

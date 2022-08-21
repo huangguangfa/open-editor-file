@@ -2,8 +2,9 @@ import url from "url";
 import path from "path";
 import { launchEditor } from "./core/launch-editor";
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
+import { injectGetEditorFile } from "./core/get-file-path";
 
-export default function (
+function openEditorFile(
   specifiedEditor: specifiedEditor,
   srcRoot: srcRoot,
   onErrorCallback: onErrorCallback
@@ -37,3 +38,5 @@ export default function (
     }
   };
 }
+
+export { injectGetEditorFile, openEditorFile };

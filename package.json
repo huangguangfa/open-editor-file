@@ -1,5 +1,5 @@
 {
-  "name": "open-vscode-file",
+  "name": "open-editor-file",
   "version": "0.0.1",
   "description": "Supports both Webpack and Vite out-of-the-box",
   "repository": {

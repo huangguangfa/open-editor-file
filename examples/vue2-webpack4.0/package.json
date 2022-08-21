@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "open-vscode-file": "workspace:^0.0.1",
+    "open-editor-file": "workspace:*",
     "vue": "^2.6.11"
   },
   "devDependencies": {

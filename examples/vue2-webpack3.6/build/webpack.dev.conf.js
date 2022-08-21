@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FriendlyErrorsPlugin = require("friendly-errors-webpack-plugin");
 const portfinder = require("portfinder");
-const { openFileServicePlugin } = require("open-vscode-file/webpack");
+const { openFileServicePlugin } = require("open-editor-file/webpack");
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 console.log("openFileServicePlugin", openFileServicePlugin);
@@ -18,8 +18,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.dev.cssSourceMap,
-      usePostCSS: true
-    })
+      usePostCSS: true,
+    }),
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
@@ -31,9 +31,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       rewrites: [
         {
           from: /.*/,
-          to: path.posix.join(config.dev.assetsPublicPath, "index.html")
-        }
-      ]
+          to: path.posix.join(config.dev.assetsPublicPath, "index.html"),
+        },
+      ],
     },
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
@@ -48,17 +48,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll
+      poll: config.dev.poll,
     },
     // onBeforeSetupMiddleware: openFileServicePlugin()
     // onBeforeSetupMiddleware: function(devServer) {
     //   console.log(devServer);
     // }
-    before: openFileServicePlugin()
+    before: openFileServicePlugin(),
   },
   plugins: [
     new webpack.DefinePlugin({
-      "process.env": require("../config/dev.env")
+      "process.env": require("../config/dev.env"),
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
@@ -67,17 +67,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "index.html",
-      inject: true
+      inject: true,
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, "../static"),
         to: config.dev.assetsSubDirectory,
-        ignore: [".*"]
-      }
-    ])
-  ]
+        ignore: [".*"],
+      },
+    ]),
+  ],
 });
 
 module.exports = new Promise((resolve, reject) => {
@@ -96,12 +96,12 @@ module.exports = new Promise((resolve, reject) => {
         new FriendlyErrorsPlugin({
           compilationSuccessInfo: {
             messages: [
-              `Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`
-            ]
+              `Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`,
+            ],
           },
           onErrors: config.dev.notifyOnErrors
             ? utils.createNotifierCallback()
-            : undefined
+            : undefined,
         })
       );
 
