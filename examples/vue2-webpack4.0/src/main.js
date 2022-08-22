@@ -3,7 +3,7 @@ import App from "./App.vue";
 
 import { injectGetEditorFile } from "open-editor-file";
 
-Vue.use(injectGetEditorFile);
+Vue.use(injectGetEditorFile({ keyName: "a" }));
 
 Vue.config.productionTip = false;
 
