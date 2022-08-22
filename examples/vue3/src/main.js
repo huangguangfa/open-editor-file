@@ -10,6 +10,6 @@ const app = createApp(App);
 
 app.use(router);
 
-app.use(injectGetEditorFile);
+app.use(injectGetEditorFile({ keyName: "a" }));
 
 app.mount("#app");

@@ -1,4 +1,5 @@
 <template>
+  <h1>vue3</h1>
   <componentA></componentA>
   <componentB></componentB>
 
