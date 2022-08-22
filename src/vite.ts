@@ -3,7 +3,9 @@ import { options } from "./config";
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
 import type { ViteDevServer, Plugin } from "vite";
 
-export function openFileServicePlugin(
+import { openEditorFilePlugin } from "./core/get-file-path";
+
+function openEditorFileServicePlugin(
   specifiedEditor: specifiedEditor,
   srcRoot: srcRoot,
   onErrorCallback: onErrorCallback
@@ -26,3 +28,5 @@ export function openFileServicePlugin(
     },
   };
 }
+
+export { openEditorFilePlugin, openEditorFileServicePlugin };

@@ -1,9 +1,9 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import { injectGetEditorFile } from "open-editor-file";
+import { openEditorFilePlugin } from "open-editor-file/webpack";
 
-Vue.use(injectGetEditorFile({ keyName: "a" }));
+Vue.use(openEditorFilePlugin({ keyName: "a" }));
 
 Vue.config.productionTip = false;
 

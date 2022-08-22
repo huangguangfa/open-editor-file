@@ -2,7 +2,7 @@ import url from "url";
 import path from "path";
 import { launchEditor } from "./core/launch-editor";
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
-import { injectGetEditorFile } from "./core/get-file-path";
+import { openEditorFilePlugin } from "./core/get-file-path";
 
 function openEditorFile(
   specifiedEditor: specifiedEditor,
@@ -39,4 +39,4 @@ function openEditorFile(
   };
 }
 
-export { injectGetEditorFile, openEditorFile };
+export { openEditorFilePlugin, openEditorFile };

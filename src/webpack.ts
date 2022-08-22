@@ -1,7 +1,7 @@
-import { openEditorFile, injectGetEditorFile } from "./index";
+import { openEditorFile, openEditorFilePlugin } from "./index";
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
 
-function openFileServicePlugin(
+function openEditorFileServicePlugin(
   specifiedEditor: specifiedEditor,
   srcRoot: srcRoot,
   onErrorCallback: onErrorCallback
@@ -14,4 +14,4 @@ function openFileServicePlugin(
   };
 }
 
-export { injectGetEditorFile, openFileServicePlugin };
+export { openEditorFilePlugin, openEditorFileServicePlugin };

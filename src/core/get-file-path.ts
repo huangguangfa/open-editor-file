@@ -4,7 +4,7 @@ interface Options {
   keyName: string | Array<string>;
 }
 
-export function injectGetEditorFile(options?: Options) {
+export function openEditorFilePlugin(options?: Options) {
   const { keyName } = options || {};
   const state = {
     keyName: "",

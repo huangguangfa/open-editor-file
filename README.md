@@ -11,12 +11,12 @@
 ### 第一步 ```自定义服务插件```
 #### webpack构建工具使用(`webpack(3.6 | 4.0)版本 => webpack.dev.conf.js`)
 ```js
-const { openFileServicePlugin } = require("open-vscode-file/webpack");
+const { openEditorFileServicePlugin } = require("open-vscode-file/webpack");
 const devWebpackConfig = merge(baseWebpackConfig, {
     ...,
     devServer: {
         ...,
-        before: openFileServicePlugin(), // 注入插件
+        before: openEditorFileServicePlugin(), // 注入插件
         ...
     }
 })
@@ -31,11 +31,11 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 // 引入插件
-import { openFileServicePlugin } from "open-vscode-file/vite";
+import { openEditorFileServicePlugin } from "open-vscode-file/vite";
 
 export default defineConfig({
   // 使用插件
-  plugins: [vue(), openFileServicePlugin()],
+  plugins: [vue(), openEditorFileServicePlugin()],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
@@ -51,4 +51,17 @@ export default defineConfig({
 
 ### 第二步 ```添加自定义键盘事件打开组件文件```
 
+```js
 
+import { openEditorFilePlugin } from "open-editor-file";
+app.use(openEditorFilePlugin(options);
+
+// 默认快捷键
+macos: command + 点击
+windows: ctrl + 点击
+
+// 自定义快捷键可通过{ keyName: string | Array<string> }
+app.use(openEditorFilePlugin({ keyName:'a' });
+// 多个
+app.use(openEditorFilePlugin({ keyName:['a', 'b'] });
+```

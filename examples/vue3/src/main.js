@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 
-import { injectGetEditorFile } from "open-editor-file";
+import { openEditorFilePlugin } from "open-editor-file/webpack";
 
 import "./assets/main.css";
 
@@ -10,6 +10,6 @@ const app = createApp(App);
 
 app.use(router);
 
-app.use(injectGetEditorFile({ keyName: "a" }));
+app.use(openEditorFilePlugin({ keyName: "a" }));
 
 app.mount("#app");
