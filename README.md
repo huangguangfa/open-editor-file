@@ -65,3 +65,13 @@ app.use(openEditorFilePlugin({ keyName:'a' });
 // 多个
 app.use(openEditorFilePlugin({ keyName:['a', 'b'] });
 ```
+
+### 常用配置选线
+```js
+import { openEditorFilePlugin } from "open-editor-file";
+app.use(openEditorFilePlugin({
+  keyName: string | Array<string> // 键盘的快捷键配置
+  highlight:'xxx' // 高亮的组件颜色和边框颜色 默认-green
+  isHighlight:true // 是否开启组件高亮选择   默认-true
+});
+```

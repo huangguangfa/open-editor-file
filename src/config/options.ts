@@ -3,4 +3,6 @@ export const options = {
   serverPath: "__open-in-editors",
   // 键盘按键 + click
   keyName: ["Meta", "Ctrl"],
+  // 组件高亮的颜色
+  highlight: "green",
 };

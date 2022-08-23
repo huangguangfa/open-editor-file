@@ -4,6 +4,8 @@ import { displayMark, hideMark, createMarkComNameChild } from "../core/dom";
 
 interface Options {
   keyName: string | Array<string>;
+  highlight: string;
+  isHighlight: boolean;
 }
 
 export type ElMap = Map<HTMLElement, ElMapValue>;
@@ -11,15 +13,18 @@ export interface ElMapValue {
   comName: string;
   origStyle: object;
   markComChild: HTMLElement;
+  highlight: string;
 }
 
 const elMap: ElMap = new Map();
 
 export function openEditorFilePlugin(options?: Options) {
-  const { keyName } = options || {};
+  const { keyName, highlight, isHighlight } = options || {};
   const state = {
     keyName: "",
     keyList: defaultOptions.keyName,
+    highlight: highlight ?? defaultOptions.highlight,
+    isHighlight: isHighlight ?? true,
   };
 
   if (Array.isArray(keyName)) state.keyList = keyName as Array<string>;
@@ -27,12 +32,12 @@ export function openEditorFilePlugin(options?: Options) {
 
   document.onkeyup = function () {
     state.keyName = "";
-    hideMark(elMap);
+    state.isHighlight && hideMark(elMap);
   };
   document.onkeydown = function (event) {
     event = event || window.event;
     state.keyName = event.key;
-    displayMark(elMap);
+    state.isHighlight && displayMark(elMap);
   };
   return function (Vue: any) {
     const vueVersion = Vue.version.slice(0, 1);
@@ -54,7 +59,8 @@ export function openEditorFilePlugin(options?: Options) {
           elMap.set(this.$el as HTMLElement, {
             comName,
             origStyle: this.$el.style || "",
-            markComChild: createMarkComNameChild(comName),
+            markComChild: createMarkComNameChild(comName, state.highlight),
+            highlight: state.highlight,
           });
           this.$el.onclick = function () {
             if (state.keyList.includes(state.keyName)) {
