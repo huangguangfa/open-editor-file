@@ -77,7 +77,7 @@ app.use(openEditorFilePlugin({ keyName:'a' });
 app.use(openEditorFilePlugin({ keyName:['a', 'b'] });
 ```
 
-### 常用配置选线
+### 常用配置选项
 ```js
 import { openEditorFilePlugin } from "open-editor-file";
 app.use(openEditorFilePlugin({
