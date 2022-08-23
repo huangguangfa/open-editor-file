@@ -1,6 +1,13 @@
 # open-editor-file
 
-用于`vue(2,3)`项目, 通过`点击页面`快速打开当前组件文件功能、支持市面主流编辑器`vscode、 webstorm、sublimeText、idea、phpstorm、等等...`、支持开箱即用、常用参数定制化需求! 
+用于`vue(2,3)`项目, 通过`点击页面`快速打开当前组件文件功能、支持市面主流编辑器`vscode、 webstorm、sublimeText、idea、phpstorm、等等...`、支持开箱即用、常用参数定制化需求!
+
+### 安装插件
+```js
+yarn add open-editor-file -D
+// 或者
+pnpm add open-editor-file -D
+```
 
 ### 使用插件步骤
 - 🎃 在`vue.config.js` 或者 `vite.config.js` 加入`自定义服务插件`
@@ -54,7 +61,11 @@ export default defineConfig({
 ```js
 
 import { openEditorFilePlugin } from "open-editor-file";
-app.use(openEditorFilePlugin(options);
+// webpack
+process.env.NODE_ENV === 'development' && Vue.use(openEditorFilePlugin());
+
+// vite
+import.meta.env.DEV && app.use(openEditorFilePlugin());
 
 // 默认快捷键
 macos: command + 点击

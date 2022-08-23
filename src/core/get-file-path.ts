@@ -54,7 +54,6 @@ export function openEditorFilePlugin(options?: Options) {
         const { __file } = this.$options;
         const rootUid = this._uid || this.$?.uid;
         if (__file && rootUid > flag && this.$el && this.$el.nodeType === 1) {
-          console.log(this.$el.style);
           const comName = __file.substr(__file.lastIndexOf("/") + 1);
           elMap.set(this.$el as HTMLElement, {
             comName,
