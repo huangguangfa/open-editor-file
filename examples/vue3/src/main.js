@@ -10,6 +10,12 @@ const app = createApp(App);
 
 app.use(router);
 
-app.use(openEditorFilePlugin({ keyName: "a" }));
+app.use(
+  openEditorFilePlugin({
+    keyName: "a",
+    isHighlight: true,
+    highlight: "red",
+  })
+);
 
 app.mount("#app");

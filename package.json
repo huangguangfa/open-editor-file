@@ -1,6 +1,6 @@
 {
   "name": "open-editor-file",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Supports both Webpack and Vite out-of-the-box",
   "repository": {
     "type": "git",
