@@ -1,5 +1,5 @@
 <template>
-  <div class="componentB">componentB</div>
+  <div class="componentB">B</div>
 </template>
 
 <style>

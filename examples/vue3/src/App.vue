@@ -1,15 +1,22 @@
 <template>
   <h1>vue3</h1>
   <componentA></componentA>
-  <componentB></componentB>
+  <componentB v-if="show"></componentB>
 
-  <RouterView />
+  <!-- <RouterView /> -->
 </template>
 
 <script lang="ts" setup>
 import componentA from "./components/componentA.vue";
 import componentB from "./components/componentB.vue";
-import { RouterLink, RouterView } from "vue-router";
+import { RouterView } from "vue-router";
+import { ref } from "vue";
+
+const show = ref(true);
+
+// setTimeout(() => {
+//   show.value = false;
+// }, 5000);
 
 // setTimeout(() => {
 //   const path =

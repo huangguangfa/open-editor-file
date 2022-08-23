@@ -1,7 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 
-import { openEditorFilePlugin } from "open-editor-file/webpack";
+import { openEditorFilePlugin } from "open-editor-file";
 
 Vue.use(openEditorFilePlugin({ keyName: "a" }));
 

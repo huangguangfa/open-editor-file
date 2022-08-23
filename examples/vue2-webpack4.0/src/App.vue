@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <componentA></componentA>
-    <componentB></componentB>
+    <componentB v-if="show"></componentB>
   </div>
 </template>
 
@@ -14,7 +14,15 @@ export default {
     componentA,
     componentB,
   },
+  data() {
+    return {
+      show: true,
+    };
+  },
   created() {
+    setTimeout(() => {
+      this.show = false;
+    }, 5000);
     // setTimeout(() => {
     //   const path =
     //     "/Users/guangfa/Desktop/guangfaMac/guangfa/gfCode/open-editor-file/examples/vue3/src/components/componentA.vue";

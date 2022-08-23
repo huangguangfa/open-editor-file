@@ -11,7 +11,7 @@
 ### 第一步 ```自定义服务插件```
 #### webpack构建工具使用(`webpack(3.6 | 4.0)版本 => webpack.dev.conf.js`)
 ```js
-const { openEditorFileServicePlugin } = require("open-vscode-file/webpack");
+const { openEditorFileServicePlugin } = require("open-editor-file/webpack");
 const devWebpackConfig = merge(baseWebpackConfig, {
     ...,
     devServer: {
@@ -31,7 +31,7 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 // 引入插件
-import { openEditorFileServicePlugin } from "open-vscode-file/vite";
+import { openEditorFileServicePlugin } from "open-editor-file/vite";
 
 export default defineConfig({
   // 使用插件

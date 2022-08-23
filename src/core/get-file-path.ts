@@ -1,8 +1,19 @@
 import { options as defaultOptions } from "../config";
 import { throwError } from "../utils";
+import { displayMark, hideMark, createMarkComNameChild } from "../core/dom";
+
 interface Options {
   keyName: string | Array<string>;
 }
+
+export type ElMap = Map<HTMLElement, ElMapValue>;
+export interface ElMapValue {
+  comName: string;
+  origStyle: object;
+  markComChild: HTMLElement;
+}
+
+const elMap: ElMap = new Map();
 
 export function openEditorFilePlugin(options?: Options) {
   const { keyName } = options || {};
@@ -16,10 +27,12 @@ export function openEditorFilePlugin(options?: Options) {
 
   document.onkeyup = function () {
     state.keyName = "";
+    hideMark(elMap);
   };
   document.onkeydown = function (event) {
     event = event || window.event;
     state.keyName = event.key;
+    displayMark(elMap);
   };
   return function (Vue: any) {
     const vueVersion = Vue.version.slice(0, 1);
@@ -36,6 +49,13 @@ export function openEditorFilePlugin(options?: Options) {
         const { __file } = this.$options;
         const rootUid = this._uid || this.$?.uid;
         if (__file && rootUid > flag && this.$el && this.$el.nodeType === 1) {
+          console.log(this.$el.style);
+          const comName = __file.substr(__file.lastIndexOf("/") + 1);
+          elMap.set(this.$el as HTMLElement, {
+            comName,
+            origStyle: this.$el.style || "",
+            markComChild: createMarkComNameChild(comName),
+          });
           this.$el.onclick = function () {
             if (state.keyList.includes(state.keyName)) {
               const param = `?file=${__file}`;
@@ -45,6 +65,13 @@ export function openEditorFilePlugin(options?: Options) {
             }
           };
         }
+      },
+      destroyed() {
+        elMap.delete(this.$el);
+      },
+      // 兼容vue3
+      unmounted() {
+        elMap.delete(this.$el);
       },
     });
   };
