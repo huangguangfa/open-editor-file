@@ -1,13 +1,13 @@
 {
   "name": "open-editor-file",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Supports both Webpack and Vite out-of-the-box",
   "repository": {
     "type": "git",
     "url": "https://github.com/huanggungfa/open-vscode-file"
   },
   "scripts": {
-    "build": "tsup && esno scripts/build.ts",
+    "build": "tsup  --target es5 && esno scripts/build.ts",
     "dev": "tsup --watch src",
     "lint": "eslint"
   },
@@ -35,6 +35,7 @@
   "author": "gf",
   "license": "ISC",
   "devDependencies": {
+    "@swc/core": "^1.2.242",
     "@types/node": "^18.7.5",
     "@types/shell-quote": "^1.7.1",
     "@typescript-eslint/eslint-plugin": "^5.33.1",

@@ -2,6 +2,8 @@
 
 用于`vue(2,3)`项目, 通过`点击页面`快速打开当前组件文件功能、支持市面主流编辑器`vscode、 webstorm、sublimeText、idea、phpstorm、等等...`、支持开箱即用、常用参数定制化需求!
 
+![](https://blogs-macos.oss-cn-shenzhen.aliyuncs.com/ui/7711661422245_.pic.jpg)
+
 ### 安装插件
 ```js
 yarn add open-editor-file -D

@@ -18,7 +18,7 @@ export function createMarkComNameChild(
   comName: string,
   filePath: string
 ): HTMLElement {
-  const span: any = document.createElement("span");
+  const span: HTMLElement = document.createElement("span");
   span.innerText = comName;
   span.title = filePath;
   return span;
@@ -27,9 +27,7 @@ export function createMarkComNameChild(
 export function displayMark(elMap: ElMap) {
   for (let el of elMap.keys()) {
     const { markComChild, highlight } = elMap.get(el) || {};
-    el.style.position = "relative";
     markComChild && ((markComChild.style as any) = setMarkComStyle(highlight));
-    console.log("markComChild", markComChild);
     el.appendChild(markComChild as HTMLElement);
   }
 }

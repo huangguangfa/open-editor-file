@@ -14,7 +14,7 @@ import.meta.env.DEV &&
     openEditorFilePlugin({
       keyName: "a",
       isHighlight: true,
-      highlight: "red",
+      highlight: "white",
     })
   );
 

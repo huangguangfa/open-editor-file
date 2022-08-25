@@ -1,9 +1,9 @@
 <template>
-  <div class="componentB">C组件</div>
+  <div class="componentC">C组件</div>
 </template>
 
 <style>
-.componentB {
+.componentC {
   width: 150px;
   height: 150px;
   border: 1px solid #ddd;
