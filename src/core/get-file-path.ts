@@ -14,6 +14,7 @@ export interface ElMapValue {
   origStyle: object;
   markComChild: HTMLElement;
   highlight: string;
+  filePath: string;
 }
 
 const elMap: ElMap = new Map();
@@ -58,8 +59,9 @@ export function openEditorFilePlugin(options?: Options) {
           elMap.set(this.$el as HTMLElement, {
             comName,
             origStyle: this.$el.attributes[1]?.value || "",
-            markComChild: createMarkComNameChild(comName, state.highlight),
+            markComChild: createMarkComNameChild(comName, __file),
             highlight: state.highlight,
+            filePath: __file,
           });
           this.$el.onclick = function () {
             if (state.keyList.includes(state.keyName)) {

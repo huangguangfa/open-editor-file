@@ -1,5 +1,5 @@
 <template>
-  <div class="componentB">B</div>
+  <div class="componentB">B组件</div>
 </template>
 
 <style>
@@ -7,6 +7,5 @@
   width: 300px;
   height: 300px;
   border: 1px solid #eee;
-  margin: 0 5px;
 }
 </style>

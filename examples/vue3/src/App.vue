@@ -2,13 +2,14 @@
   <h1>vue3</h1>
   <componentA></componentA>
   <componentB style="width: 100px; height: 100px"></componentB>
-
+  <componentC></componentC>
   <!-- <RouterView /> -->
 </template>
 
 <script lang="ts" setup>
 import componentA from "./components/componentA.vue";
 import componentB from "./components/componentB.vue";
+import componentC from "./components/componentC.vue";
 import { ref } from "vue";
 
 const show = ref(true);
