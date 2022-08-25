@@ -57,7 +57,7 @@ export function openEditorFilePlugin(options?: Options) {
           const comName = __file.substr(__file.lastIndexOf("/") + 1);
           elMap.set(this.$el as HTMLElement, {
             comName,
-            origStyle: this.$el.style || "",
+            origStyle: this.$el.attributes[1]?.value || "",
             markComChild: createMarkComNameChild(comName, state.highlight),
             highlight: state.highlight,
           });

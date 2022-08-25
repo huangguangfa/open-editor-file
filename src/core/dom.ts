@@ -1,3 +1,4 @@
+import { randomColor } from "../utils";
 import type { ElMap } from "./get-file-path";
 
 export function createMarkComNameChild(
@@ -7,10 +8,13 @@ export function createMarkComNameChild(
   const span: any = document.createElement("span");
   span.style = `position: absolute;
   left: 0;
-  top: -15px;
+  top: 0px;
   zIndex: 111;
   fontSize: 12px;
   cursor:pointer;
+  background:${randomColor()};
+  width:100%;
+  height:100%;
   color: ${highlight}`;
   span.innerText = comName;
   return span;
@@ -18,8 +22,7 @@ export function createMarkComNameChild(
 
 export function displayMark(elMap: ElMap) {
   for (let el of elMap.keys()) {
-    const { markComChild, highlight } = elMap.get(el) || {};
-    el.style.border = `1px solid ${highlight}`;
+    const { markComChild } = elMap.get(el) || {};
     el.style.position = "relative";
     el.appendChild(markComChild as HTMLElement);
   }

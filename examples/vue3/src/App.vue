@@ -1,7 +1,7 @@
 <template>
   <h1>vue3</h1>
   <componentA></componentA>
-  <componentB v-if="show"></componentB>
+  <componentB style="width: 100px; height: 100px"></componentB>
 
   <!-- <RouterView /> -->
 </template>
@@ -9,7 +9,6 @@
 <script lang="ts" setup>
 import componentA from "./components/componentA.vue";
 import componentB from "./components/componentB.vue";
-import { RouterView } from "vue-router";
 import { ref } from "vue";
 
 const show = ref(true);
