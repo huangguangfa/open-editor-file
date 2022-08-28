@@ -26,6 +26,7 @@ export function openEditorFilePlugin(options?: Options) {
     keyList: defaultOptions.keyName,
     highlight: highlight ?? defaultOptions.highlight,
     isHighlight: isHighlight ?? true,
+    isKeyName: false,
   };
 
   if (Array.isArray(keyName)) state.keyList = keyName as Array<string>;
@@ -33,13 +34,19 @@ export function openEditorFilePlugin(options?: Options) {
 
   document.onkeyup = function () {
     state.keyName = "";
-    state.isHighlight && hideMark(elMap);
+    state.isKeyName && state.isHighlight && hideMark(elMap);
   };
   document.onkeydown = function (event) {
     event = event || window.event;
     state.keyName = event.key;
-    state.isHighlight && displayMark(elMap);
+    if (state.keyList.includes(state.keyName)) {
+      state.isHighlight && displayMark(elMap);
+      state.isKeyName = true;
+      return;
+    }
+    state.isKeyName = false;
   };
+
   return function (Vue: any) {
     const vueVersion = Vue.version.slice(0, 1);
     const isVue3 = vueVersion === "3";

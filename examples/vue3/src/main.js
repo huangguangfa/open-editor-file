@@ -12,7 +12,6 @@ app.use(router);
 import.meta.env.DEV &&
   app.use(
     openEditorFilePlugin({
-      keyName: "a",
       isHighlight: true,
       highlight: "white",
     })
