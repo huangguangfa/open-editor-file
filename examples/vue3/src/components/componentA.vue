@@ -1,7 +1,7 @@
 <template>
   <div class="componentA">
     A组件
-    <componentsA1 style="width: 100px; height: 100px"></componentsA1>
+    <componentsA1 style="width: 200px; height: 100px"></componentsA1>
   </div>
 </template>
 

@@ -33,8 +33,11 @@ export function openEditorFilePlugin(options?: Options) {
   if (typeof keyName === "string") state.keyList.push(keyName);
 
   document.onkeyup = function () {
-    state.keyName = "";
-    state.isKeyName && state.isHighlight && hideMark(elMap);
+    if (state.isKeyName) {
+      state.keyName = "";
+      state.isHighlight && hideMark(elMap);
+      state.isKeyName = false;
+    }
   };
   document.onkeydown = function (event) {
     event = event || window.event;
@@ -75,6 +78,9 @@ export function openEditorFilePlugin(options?: Options) {
               const param = `?file=${__file}`;
               const url = `${defaultOptions.serverPath}${param}`;
               console.log("%c 打开文件成功!", "color: green;");
+              state.keyName = "";
+              state.isKeyName = false;
+              hideMark(elMap);
               fetch(url);
               e.stopPropagation();
             }

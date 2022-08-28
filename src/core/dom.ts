@@ -8,6 +8,7 @@ function setMarkComStyle(highlight = "#000") {
   font-size: 12px;
   cursor:pointer;
   background:${randomColor()};
+  display:block;
   color: ${highlight}`;
 }
 
@@ -25,14 +26,17 @@ export function displayMark(elMap: ElMap) {
   for (let el of elMap.keys()) {
     const { markComChild, highlight } = elMap.get(el) || {};
     markComChild && ((markComChild.style as any) = setMarkComStyle(highlight));
-    el.appendChild(markComChild as HTMLElement);
+    if (!(markComChild?.parentNode === el)) {
+      el.appendChild(markComChild as HTMLElement);
+    }
   }
 }
 
 export function hideMark(elMap: ElMap) {
   for (let el of elMap.keys()) {
-    const { origStyle, markComChild } = elMap.get(el) || {};
-    (el.style as any) = origStyle || {};
-    el.removeChild(markComChild as HTMLElement);
+    const { markComChild } = elMap.get(el) || {};
+    if (markComChild?.style?.display) {
+      markComChild!.style!.display = "none";
+    }
   }
 }
