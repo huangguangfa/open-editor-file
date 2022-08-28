@@ -70,14 +70,15 @@ export function openEditorFilePlugin(options?: Options) {
             highlight: state.highlight,
             filePath: __file,
           });
-          this.$el.onclick = function () {
-            if (state.keyList.includes(state.keyName)) {
+          this.$el.addEventListener("click", (e: Event) => {
+            if (state.isKeyName) {
               const param = `?file=${__file}`;
               const url = `${defaultOptions.serverPath}${param}`;
               console.log("%c 打开文件成功!", "color: green;");
               fetch(url);
+              e.stopPropagation();
             }
-          };
+          });
         }
       },
       destroyed() {

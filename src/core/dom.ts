@@ -2,15 +2,12 @@ import { randomColor } from "../utils";
 import type { ElMap } from "./get-file-path";
 
 function setMarkComStyle(highlight = "#000") {
-  return `position: absolute;
-  left: 0;
-  top: 0px;
-  zIndex: 111;
+  return `
+  position: fixed;
+  zIndex: 9999;
   font-size: 12px;
   cursor:pointer;
   background:${randomColor()};
-  width:100%;
-  height:100%;
   color: ${highlight}`;
 }
 
