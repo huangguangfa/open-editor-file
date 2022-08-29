@@ -65,14 +65,22 @@ export function openEditorFilePlugin(options?: Options) {
         const { __file } = this.$options;
         const rootUid = this._uid || this.$?.uid;
         if (__file && rootUid > flag && this.$el && this.$el.nodeType === 1) {
-          const comName = __file.substr(__file.lastIndexOf("/") + 1);
-          elMap.set(this.$el as HTMLElement, {
+          const pathIndex = __file.lastIndexOf("/");
+          let comName = __file.substr(pathIndex + 1);
+          const rootVue = "index.vue";
+          const comNameList = __file.split("/");
+          // 解决都是index.vue的问题
+          if (comName === rootVue) {
+            comName = comNameList[comNameList.length - 2] + "/" + comName;
+          }
+          const comInfo = {
             comName,
             origStyle: this.$el.attributes[1]?.value || "",
             markComChild: createMarkComNameChild(comName, __file),
             highlight: state.highlight,
             filePath: __file,
-          });
+          };
+          elMap.set(this.$el as HTMLElement, comInfo);
           this.$el.addEventListener("click", (e: Event) => {
             if (state.isKeyName) {
               const param = `?file=${__file}`;
