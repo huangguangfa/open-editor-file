@@ -1,7 +1,6 @@
 import path from "path";
 import { ParseEntry } from "shell-quote";
 
-// normalize file/line numbers into command line args for specific editors
 export function getArgumentsForPosition(
   editor: ParseEntry | string,
   fileName: string,
