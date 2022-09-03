@@ -7,7 +7,7 @@
     "url": "https://github.com/huanggungfa/open-vscode-file"
   },
   "scripts": {
-    "build": "tsup  --target es5 && esno scripts/build.ts",
+    "build": "tsup && esno scripts/build.ts",
     "dev": "tsup --watch src",
     "lint": "eslint"
   },
@@ -28,7 +28,6 @@
       "import": "./dist/webpack.mjs"
     }
   },
-  "keywords": [],
   "files": [
     "dist"
   ],
