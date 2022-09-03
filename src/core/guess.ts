@@ -2,9 +2,6 @@ import path from "path";
 import shellQuote from "shell-quote";
 import childProcess from "child_process";
 
-// Map from full process name to binary that starts the process
-// We can't just re-use full process name, because it will spawn a new instance
-// of the app every time
 import {
   COMMON_EDITORS_OSX,
   COMMON_EDITORS_LINUX,
