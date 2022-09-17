@@ -1,9 +1,9 @@
 import { openEditorFile } from "./index";
 import { options } from "./config";
+import { openEditorFilePlugin } from "./core/get-file-path";
+
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
 import type { ViteDevServer, Plugin } from "vite";
-
-import { openEditorFilePlugin } from "./core/get-file-path";
 
 function openEditorFileServicePlugin(
   specifiedEditor: specifiedEditor,

@@ -20,9 +20,9 @@ export default {
     };
   },
   created() {
-    setTimeout(() => {
-      this.show = false;
-    }, 5000);
+    // setTimeout(() => {
+    //   this.show = false;
+    // }, 5000);
     // setTimeout(() => {
     //   const path =
     //     "/Users/guangfa/Desktop/guangfaMac/guangfa/gfCode/open-editor-file/examples/vue3/src/components/componentA.vue";

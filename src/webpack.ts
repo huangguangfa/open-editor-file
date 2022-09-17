@@ -1,4 +1,7 @@
-import { openEditorFile, openEditorFilePlugin } from "./index";
+import { openEditorFile } from "./index";
+import { openEditorFilePlugin } from "./core/get-file-path";
+import { options } from "./config";
+
 import type { specifiedEditor, srcRoot, onErrorCallback } from "./types";
 
 function openEditorFileServicePlugin(
@@ -8,7 +11,7 @@ function openEditorFileServicePlugin(
 ) {
   return function (app: any) {
     app.use(
-      "/__open-in-editors",
+      `/${options.serverPath}`,
       openEditorFile(specifiedEditor, srcRoot, onErrorCallback)
     );
   };

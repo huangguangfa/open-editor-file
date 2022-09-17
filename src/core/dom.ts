@@ -5,8 +5,9 @@ function setMarkComStyle(highlight = "#000") {
   return `
   position: fixed;
   zIndex: 9999;
-  font-size: 12px;
+  font-size: 16px;
   cursor:pointer;
+  font-weight:bold;
   background:${randomColor()};
   display:block;
   color: ${highlight}`;
