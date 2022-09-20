@@ -57,10 +57,9 @@ export function openEditorFilePlugin(options?: Options) {
     // @ts-ignore
     if (isVue3 && __VUE_OPTIONS_API__ === false) {
       return throwError(
-        "当前vue3项目关闭了适配vue2的语法、请在vite.config配置define.__VUE_OPTIONS_API__ = true进行开启!!!"
+        "当前vue3项目关闭了适配vue2的语法、请在vite.config配置define.__VUE_OPTIONS_API__ = true 进行开启!!!"
       );
     }
-    console.log("111", Vue);
     Vue.mixin({
       mounted() {
         const { __file } = this.$options;
