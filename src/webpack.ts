@@ -11,7 +11,7 @@ function openEditorFileServicePlugin(
 ) {
   return function (app: any) {
     app.use(
-      `/${options.serverPath}`,
+      options.serverPath,
       openEditorFile(specifiedEditor, srcRoot, onErrorCallback)
     );
   };

@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "skipFiles": [
+                "/Users/guangfa/Desktop/guangfaMac/guangfa/gfCode/open-editor-file/dist/index.js"
+            ],
+            "program": "${workspaceFolder}/dist/index.js"
+        }
+    ]
+}

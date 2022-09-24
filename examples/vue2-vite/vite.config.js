@@ -31,6 +31,7 @@ export default defineConfig({
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"], //解决vite一定要.vue组件问题
   },
   plugins: [
+    openEditorFileServicePlugin(),
     createVuePlugin({
       jsx: true,
       jsxOptions: {
@@ -59,7 +60,6 @@ export default defineConfig({
       },
     }),
     ViteRequireContext(),
-    openEditorFileServicePlugin(),
   ],
   define: {
     "process.env": process.env,
@@ -67,5 +67,6 @@ export default defineConfig({
   server: {
     port: 3001,
     proxy: {},
+    host: true,
   },
 });

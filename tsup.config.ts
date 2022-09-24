@@ -1,12 +1,12 @@
-import type { Options } from "tsup";
+import { defineConfig } from "tsup";
 
-export const tsup: Options = {
+export default defineConfig({
   entry: ["src/*.ts"],
   format: ["cjs", "esm"],
   dts: true,
   splitting: true,
   clean: true,
   shims: false,
-  minify: true,
-  sourcemap: false,
-};
+  // minify: true,
+  sourcemap: true,
+});
